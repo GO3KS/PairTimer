@@ -1,12 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import App from './App'
 import { GlobalContextProvider } from './context/GlobalContext'
+import { AuthProvider } from './config/Auth'
+import { CookiesProvider } from 'react-cookie'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <GlobalContextProvider>
-        <App />
-    </GlobalContextProvider>
+    <CookiesProvider>
+        <AuthProvider>
+            <GlobalContextProvider>
+                <App />
+            </GlobalContextProvider>
+        </AuthProvider>
+    </CookiesProvider>
 )
