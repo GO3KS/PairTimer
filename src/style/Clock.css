@@ -1,0 +1,12 @@
+.container {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40%);
+    left: 50%;
+    transform: translateX(-50%);
+}
+h1 {
+    margin: 0;
+    font-size: 100px;
+}
