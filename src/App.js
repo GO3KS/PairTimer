@@ -6,6 +6,7 @@ import './style/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './component/Login'
 import { useCookies } from 'react-cookie'
+import Dashboard from './component/Dashboard'
 
 const App = () => {
 	const [cookies, setCookie] = useCookies()
@@ -20,6 +21,14 @@ const App = () => {
 							<Clock />
 							<StartStop />
 							<Submit />
+						</div>
+					}
+				/>
+				<Route
+					path="/dashboard"
+					element={
+						<div>
+							<Dashboard />
 						</div>
 					}
 				/>
