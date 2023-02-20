@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import '../style/Clock.css'
 import { useIsActive, useSetTime, useTime } from '../context/GlobalContext'
 
-const Clock = () => {
+const StopWatch = () => {
 
     const time = useTime()
     const setTime = useSetTime()
@@ -41,4 +41,4 @@ const Clock = () => {
 
 }
 
-export default Clock
+export default StopWatch

@@ -1,5 +1,5 @@
 import React from 'react'
-import Clock from './component/Clock'
+import StopWatch from './component/StopWatch'
 import StartStop from './component/StartStop'
 import Submit from './component/Submit'
 import './style/App.css'
@@ -13,12 +13,12 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route exact path="/" element={cookies.username === undefined ? <Navigate to="/login" /> : <Navigate to="/clock" />} />
+				<Route exact path="/" element={cookies.username === undefined ? <Navigate to="/login" /> : <Navigate to="/stopwatch" />} />
 				<Route
-					path="/clock"
+					path="/stopwatch"
 					element={
 						<div>
-							<Clock />
+							<StopWatch />
 							<StartStop />
 							<Submit />
 						</div>

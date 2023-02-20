@@ -22,39 +22,38 @@ const Login = () => {
     }
 
     const getUserData = async () => {
-        const db = getDatabase()
-        const reference = ref(db, 'users/')
-        onValue(reference, async (snapshot) => {
-            const data = await snapshot.val()
-            let isValid = false
-            console.log(password)
-            console.log(username)
-            _.forEach(data, (o) => {
-                if (o.username === username && o.password === v4(password)) {
-                    console.log(o)
-                    isValid = true
-                }
-            })
-            console.log(isValid)
-            if (isValid) {
-                if (remember) {
-                    saveToCookies()
-                }
-                navigate('/clock')
-            }
+        navigate('/stopwatch')
+        // const db = getDatabase()
+        // const reference = ref(db, 'users/')
+        // onValue(reference, async (snapshot) => {
+        // const data = await snapshot.val()
+        // let isValid = false
+        // _.forEach(data, (o) => {
+        //     if (o.username === username && o.password === v4(password)) {
+        //         console.log(o)
+        //         isValid = true
+        //     }
+        // })
+        // console.log(isValid)
+        // if (isValid) {
+        //     if (remember) {
+        //         saveToCookies()
+        //     }
 
-        })
+        // }
+
+        // })
     }
 
-    const isFilled = () => {
-        if (_.isEmpty(username)) {
-            return false
-        }
-        if (_.isEmpty(password)) {
-            return false
-        }
-        return true
-    }
+    // const isFilled = () => {
+    //     if (_.isEmpty(username)) {
+    //         return false
+    //     }
+    //     if (_.isEmpty(password)) {
+    //         return false
+    //     }
+    //     return true
+    // }
 
     return (
         <>
@@ -75,7 +74,7 @@ const Login = () => {
                         <input type="checkbox" value="remember-me" onClick={() => setRemember(!remember)} /> Remember me
                     </label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={() => isFilled() ? getUserData() : null}>Sign in</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={() => getUserData()}>Sign in</button>
                 <a href={""} onClick={() => navigate('/register')}>register</a>
             </div>
         </>
