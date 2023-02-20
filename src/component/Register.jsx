@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { getDatabase, ref, push, onValue } from '@firebase/database'
 import { v4 } from 'uuid';
+import _ from 'lodash'
 
 const Register = () => {
 
@@ -12,25 +13,33 @@ const Register = () => {
 
     const navigate = useNavigate()
 
-    const writeUserData = () => {
-        const db = getDatabase()
-        const reference = ref(db, 'users/')
-        push(reference, {
-            username: username,
-            password: password,
-            email: email
-        })
-    }
-
     const getUserData = async () => {
         const db = getDatabase()
         const starCountRef = ref(db, 'users/')
-        onValue(starCountRef, (snapshot) => {
-            const data = snapshot.val()
-            const arrayOfObj = Object.entries(data).map((e) => ({ [e[0]]: e[1] }));
+        onValue(starCountRef, async (snapshot) => {
+            const data = await snapshot.val()
             console.log(data)
+            return data
         })
     }
+
+    const writeUserData = async () => {
+        const data = await getUserData()
+        const filtered = _.filter(data, (o) => { return o.username })
+        console.log(data)
+        if (_.isEmpty(filtered)) {
+            // const db = getDatabase()
+            // const reference = ref(db, 'users/')
+            // push(reference, {
+            //     username: username,
+            //     password: password,
+            //     email: email
+            // })
+        }
+
+    }
+
+
 
     return (
         <>
@@ -48,7 +57,7 @@ const Register = () => {
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" onChange={(e) => setPassword(v4(e.target.value))} />
                     <label for="floatingPassword">Password</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={() => getUserData()}>Register</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={() => writeUserData()}>Register</button>
                 <a href={""} onClick={() => navigate('/login')}>Already have an account?</a>
             </div>
         </>
