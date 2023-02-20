@@ -25,12 +25,11 @@ const StartStop = () => {
 			<Button
 				variant="contained"
 				onClick={() => {
-					setShow(isActive)
-					setIsActive(!isActive)
+					setShow(true)
 				}}
 				className={'button'}
 			>
-				<span>Start</span>
+				<span>Save</span>
 			</Button>
 			<Button variant="contained" onClick={() => setIsActive(!isActive)} className={'button'}>
 				<span>Pause</span>

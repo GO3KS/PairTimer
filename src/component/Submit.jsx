@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../style/Submit.css'
 import { useShow, useSetShow } from '../context/GlobalContext'
-import { getDatabase, ref, push } from '@firebase/database'
 import { useTime } from '../context/GlobalContext'
 import { Button, Modal } from 'react-bootstrap'
 import { TextField } from '@mui/material'
