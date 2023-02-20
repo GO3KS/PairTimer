@@ -2,21 +2,18 @@
     margin: 0;
     background-color: red;
 
-    position: absolute;
-    top: 60%;
-    transform: translateY(-40%);
-    left: 50%;
-    transform: translateX(-50%);
-
     text-align: center;
     width: 10%;
     height: 5%;
 
+    font-family: Helvetica;
+    font-weight: 800;
+}
+
+.buttonContainer {
+    margin-top: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: larger;
-    font-family: Helvetica;
-    font-weight: 800;
+    gap: 5%;
 }

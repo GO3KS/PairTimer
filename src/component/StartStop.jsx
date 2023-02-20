@@ -1,33 +1,35 @@
-import React, { useEffect } from "react"
-import { useIsActive, useSetIsActive, useSetShow } from "../context/GlobalContext"
-import "../style/StartStop.css"
+import React, { useEffect } from 'react'
+import { Button } from '@mui/material'
+import { useIsActive, useSetIsActive, useSetShow, useSetTime } from '../context/GlobalContext'
+import '../style/StartStop.css'
 
 const StartStop = () => {
+	const isActive = useIsActive()
+	const setIsActive = useSetIsActive()
+	const setShow = useSetShow()
+	const setTime = useSetTime()
 
-    const isActive = useIsActive()
-    const setIsActive = useSetIsActive()
-    const setShow = useSetShow()
+	useEffect(() => {
+		document.addEventListener('keydown', detectKeyDown, true)
+	}, [isActive])
 
-    useEffect(() => {
-        document.addEventListener('keydown', detectKeyDown, true)
-    }, [isActive])
+	const detectKeyDown = (e) => {
+		if (e.key === ' ') {
+			setShow(isActive)
+			setIsActive(!isActive)
+		}
+	}
 
-    const detectKeyDown = (e) => {
-        if (e.key === ' ') {
-            setShow(isActive)
-            setIsActive(!isActive)
-        }
-    }
-
-    return (
-        <>
-            <div onClick={() => setIsActive(!isActive)} className={'button'}>
-                <span className='text'>Start</span>
-            </div>
-        </>
-    )
-
-
+	return (
+		<div className="buttonContainer">
+			<Button variant="contained" onClick={() => setIsActive(!isActive)} className={'button'}>
+				<span>Start</span>
+			</Button>
+			<Button variant="contained" onClick={() => setTime(0)} className={'button'}>
+				<span>Reset</span>
+			</Button>
+		</div>
+	)
 }
 
 export default StartStop

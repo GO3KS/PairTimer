@@ -1,9 +1,8 @@
-const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
-
+const { getFirestore } = require('firebase-admin/firestore')
 class FirebaseDatabase {
-    getDatabase = () => {
-        return getDatabase()
-    }
+	getFirestore = () => {
+		return getFirestore()
+	}
 }
 
 export default FirebaseDatabase
