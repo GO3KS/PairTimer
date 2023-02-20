@@ -7,6 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Button } from 'react-bootstrap'
 import { Box } from '@mui/system'
 import StartStop from '../component/StartStop'
+import NavigationBar from '../component/NavigationBar'
 
 const StopWatch = () => {
 	const time = useTime()
@@ -30,19 +31,7 @@ const StopWatch = () => {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Box sx={{ flexGrow: 1 }}>
-				<AppBar position="static">
-					<Toolbar>
-						<IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-							Stopwatch
-						</Typography>
-						<Button color="inherit">Logout</Button>
-					</Toolbar>
-				</AppBar>
-			</Box>
+			<NavigationBar />
 			<div className="container">
 				<h1>
 					<span>{('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>

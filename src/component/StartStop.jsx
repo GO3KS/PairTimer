@@ -22,8 +22,18 @@ const StartStop = () => {
 
 	return (
 		<div className="buttonContainer">
-			<Button variant="contained" onClick={() => setIsActive(!isActive)} className={'button'}>
+			<Button
+				variant="contained"
+				onClick={() => {
+					setShow(isActive)
+					setIsActive(!isActive)
+				}}
+				className={'button'}
+			>
 				<span>Start</span>
+			</Button>
+			<Button variant="contained" onClick={() => setIsActive(!isActive)} className={'button'}>
+				<span>Pause</span>
 			</Button>
 			<Button variant="contained" onClick={() => setTime(0)} className={'button'}>
 				<span>Reset</span>
