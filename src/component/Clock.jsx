@@ -22,8 +22,6 @@ const Clock = () => {
         }
     }, [isActive])
 
-
-
     return (
         <div className='container'><h1>
             <span>

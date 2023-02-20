@@ -1,4 +1,4 @@
-import { getDatabase } from '@firebase/database'
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
 class FirebaseDatabase {
     getDatabase = () => {

@@ -40,7 +40,7 @@ const Login = () => {
                     </label>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={saveToCookies}>Sign in</button>
-                <a href={""} onClick={() => navigate('/clock')}>register</a>
+                <a href={""} onClick={() => navigate('/register')}>register</a>
             </div>
         </>
     )

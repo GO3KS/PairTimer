@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './component/Login'
 import { useCookies } from 'react-cookie'
 import Dashboard from './component/Dashboard'
-
+import Register from './component/Register'
 const App = () => {
 	const [cookies, setCookie] = useCookies()
 	return (
@@ -33,6 +33,7 @@ const App = () => {
 					}
 				/>
 				<Route path="/login" element={<Login />} />
+				<Route path='register' element={<Register />} />
 			</Routes>
 		</BrowserRouter>
 	)
