@@ -1,45 +1,55 @@
 import "../style/Login.css"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { getDatabase, ref, push, onValue } from '@firebase/database'
+import { getDatabase, ref, onValue, push } from '@firebase/database'
 import { v4 } from 'uuid';
 import _ from 'lodash'
 
 const Register = () => {
 
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
-    const [email, setEmail] = useState()
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
 
     const navigate = useNavigate()
 
-    const getUserData = async () => {
+
+    const writeUserData = async () => {
         const db = getDatabase()
-        const starCountRef = ref(db, 'users/')
-        onValue(starCountRef, async (snapshot) => {
+        const reference = ref(db, 'users/')
+        onValue(reference, async (snapshot) => {
             const data = await snapshot.val()
-            console.log(data)
-            return data
+            let isValid = true
+            _.forEach(data, (o) => {
+                if (o.username === username || o.email === email) {
+
+                    isValid = false
+                }
+            })
+            console.log(isValid)
+            if (isValid) {
+                push(reference, {
+                    username: username,
+                    password: password,
+                    email: email
+                })
+            }
+            navigate('/login')
         })
     }
 
-    const writeUserData = async () => {
-        const data = await getUserData()
-        const filtered = _.filter(data, (o) => { return o.username })
-        console.log(data)
-        if (_.isEmpty(filtered)) {
-            // const db = getDatabase()
-            // const reference = ref(db, 'users/')
-            // push(reference, {
-            //     username: username,
-            //     password: password,
-            //     email: email
-            // })
+    const isFilled = () => {
+        if (_.isEmpty(username)) {
+            return false
         }
-
+        if (_.isEmpty(password)) {
+            return false
+        }
+        if (_.isEmpty(email)) {
+            return false
+        }
+        return true
     }
-
-
 
     return (
         <>
@@ -57,7 +67,7 @@ const Register = () => {
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" onChange={(e) => setPassword(v4(e.target.value))} />
                     <label for="floatingPassword">Password</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={() => writeUserData()}>Register</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" onClick={() => isFilled() ? writeUserData() : null}>Register</button>
                 <a href={""} onClick={() => navigate('/login')}>Already have an account?</a>
             </div>
         </>
