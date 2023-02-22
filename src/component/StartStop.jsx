@@ -26,7 +26,7 @@ const StartStop = () => {
 				variant="contained"
 				onClick={() => {
 					setShow(true)
-					setIsActive(!isActive)
+					setIsActive(false)
 				}}
 				className={'button'}
 			>

@@ -91,7 +91,7 @@ const ToolbarWrapper = (props) => {
 							<MenuIcon />
 						</IconButton>
 						<Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-							Stopwatch
+							{props.title}
 						</Typography>
 						<IconButton color="inherit">
 							<Badge badgeContent={4} color="secondary">
