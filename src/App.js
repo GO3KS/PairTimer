@@ -5,8 +5,8 @@ import './style/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import LoginRegister from './pages/LoginRegister'
-import StopWatch from './pages/StopWatch'
-import Review from './pages/Review'
+import Stopwatch from './pages/Stopwatch'
+import Dashboard from './pages/Dashboard'
 const App = () => {
 	const [cookies, setCookie] = useCookies()
 	return (
@@ -17,13 +17,13 @@ const App = () => {
 					path="/stopwatch"
 					element={
 						<div>
-							<StopWatch />
+							<Stopwatch />
 							<Submit />
 						</div>
 					}
 				/>
 				<Route path="/login" element={<LoginRegister />} />
-				<Route path="/review" element={<Review />} />
+				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>
 		</BrowserRouter>
 	)

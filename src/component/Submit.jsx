@@ -8,6 +8,7 @@ import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../config/connection'
 import { useUserId } from '../context/GlobalContext'
 import { useCookies } from 'react-cookie'
+import { isNil } from 'lodash'
 
 const Submit = () => {
 	const show = useShow()
@@ -22,8 +23,7 @@ const Submit = () => {
 	const [cookies, setCookie] = useCookies()
 
 	const writeUserData = async () => {
-		console.log(cookies.userId)
-		await addDoc(collection(db, 'times'), { user_id: cookies.userId, time: time, participant: participant, project: project })
+		await addDoc(collection(db, 'times'), { user_id: cookies.userId ? cookies.userId : userId, time: time, participant: participant, project: project })
 	}
 
 	return (

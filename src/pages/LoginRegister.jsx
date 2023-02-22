@@ -16,7 +16,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import FailedSnackbarAlert from '../component/login_register/FailedSnackbarAlert'
+import FailedSnackbarAlert from '../component/FailedSnackbarAlert'
 import { isFilled } from '../util/isFilled'
 import { useSetUserId } from '../context/GlobalContext'
 
@@ -52,7 +52,7 @@ const LoginRegister = () => {
 			if (remember) {
 				saveToCookies(encryptedPassword)
 			}
-			navigate('/stopwatch')
+			handleClick('Created an account, please login now!')
 		} else if (!isValid) {
 			const secretsRef = collection(db, 'secrets')
 			const q = query(secretsRef, where('user_id', '==', docId))
@@ -64,6 +64,7 @@ const LoginRegister = () => {
 				if (remember) {
 					saveToCookies(docEncryptedPassword, docId)
 				}
+				setUserId(docId)
 				navigate('/stopwatch')
 			} else if (decryptedPassword !== password) {
 				handleClick('Incorrect password!')
