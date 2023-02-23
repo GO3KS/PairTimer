@@ -13,9 +13,9 @@ import Badge from '@mui/material/Badge'
 import Container from '@mui/material/Container'
 import MenuIcon from '@mui/icons-material/Menu'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import NotificationsIcon from '@mui/icons-material/Notifications'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import DrawerItems from './DrawerItems'
-import StopWatch from '../pages/Stopwatch'
+import { useNavigate } from 'react-router'
 
 const drawerWidth = 240
 
@@ -68,6 +68,9 @@ const ToolbarWrapper = (props) => {
 	const toggleDrawer = () => {
 		setOpen(!open)
 	}
+
+	const navigate = useNavigate()
+
 	return (
 		<ThemeProvider theme={mdTheme}>
 			<Box sx={{ display: 'flex' }}>
@@ -93,10 +96,8 @@ const ToolbarWrapper = (props) => {
 						<Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
 							{props.title}
 						</Typography>
-						<IconButton color="inherit">
-							<Badge badgeContent={4} color="secondary">
-								<NotificationsIcon />
-							</Badge>
+						<IconButton color="inherit" onClick={() => navigate('/login')}>
+							<ExitToAppIcon />
 						</IconButton>
 					</Toolbar>
 				</AppBar>

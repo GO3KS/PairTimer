@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
-import Chart from '../component/Chart'
+import Chart from '../component/BarChart'
 import ToolbarWrapper from '../component/ToolbarWrapper'
 
 const Dashboard = () => {
@@ -14,7 +14,7 @@ const Dashboard = () => {
 							p: 2,
 							display: 'flex',
 							flexDirection: 'column',
-							height: 240,
+							height: 525,
 						}}
 					>
 						<Chart />

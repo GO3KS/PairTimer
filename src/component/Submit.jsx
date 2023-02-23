@@ -28,7 +28,7 @@ const Submit = () => {
 
 	return (
 		<>
-			<Modal show={show} onHide={handleClose}>
+			<Modal show={show} onHide={handleClose} style={{ marginTop: 15 + '%', marginLeft: 2.25 + '%' }}>
 				<Modal.Header closeButton>
 					<Modal.Title>Save Session</Modal.Title>
 				</Modal.Header>

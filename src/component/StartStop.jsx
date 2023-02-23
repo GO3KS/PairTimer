@@ -9,17 +9,6 @@ const StartStop = () => {
 	const setShow = useSetShow()
 	const setTime = useSetTime()
 
-	// useEffect(() => {
-	// 	document.addEventListener('keydown', detectKeyDown, true)
-	// }, [isActive])
-
-	// const detectKeyDown = (e) => {
-	// 	if (e.key === ' ') {
-	// 		setShow(isActive)
-	// 		setIsActive(!isActive)
-	// 	}
-	// }
-
 	return (
 		<div className="buttonContainer">
 			<Button
@@ -33,7 +22,7 @@ const StartStop = () => {
 				<span>Save</span>
 			</Button>
 			<Button variant="contained" onClick={() => setIsActive(!isActive)} className={'button'}>
-				<span>Pause</span>
+				<span>{isActive ? "Stop" : "Start"}</span>
 			</Button>
 			<Button variant="contained" onClick={() => setTime(0)} className={'button'}>
 				<span>Reset</span>

@@ -35,7 +35,7 @@ const Stopwatch = () => {
 						<span>{('0' + ((time / 10) % 100)).slice(-2)}</span>
 					</h1>
 				</Grid>
-				<Grid item xs={12}>
+				<Grid item xs={12} justifyContent="center">
 					<StartStop />
 				</Grid>
 			</Grid>
